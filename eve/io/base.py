@@ -442,8 +442,8 @@ class DataLayer(object):
             # drop exclusion projection
             fields = dict([(field, 1) for field, value in fields.items() if
                            value])
-        if fields == {}:
-            fields = None
+        # if fields == {}:
+        #     fields = None
         # If the current HTTP method is in `public_methods` or
         # `public_item_methods`, skip the `auth_field` check
 

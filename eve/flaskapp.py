@@ -693,10 +693,10 @@ class Eve(Flask, Events):
         # just ignored.
         # Enhance the projection with automatic fields.
         if len(schema) and settings['allow_unknown'] is False:
-            exclusion_projection = {k: v for k, v in projection.items()
-                                    if v == 0}
-            inclusion_projection = {k: v for k, v in projection.items()
-                                    if v == 1}
+            exclusion_projection = dict([(k, v) for k, v in projection.items()
+                                         if v == 0])
+            inclusion_projection = dict([(k, v) for k, v in projection.items()
+                                         if v == 1])
             if exclusion_projection or inclusion_projection:
                 projection = inclusion_projection
                 ds['projection'] = projection

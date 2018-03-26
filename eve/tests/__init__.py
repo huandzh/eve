@@ -382,15 +382,12 @@ class TestBase(TestMinimal):
                                            self.different_resource]['url'])
 
         self.different_resource_exclude = 'contacts_hide_born'
-        self.different_resource_exclude_url = ('/%s' %
-                                       self.domain[
-                                           self.different_resource_exclude]['url'])
+        self.different_resource_exclude_url = (
+            '/%s' % self.domain[self.different_resource_exclude]['url'])
 
         self.resource_exclude_media = 'contacts_hide_media'
-        self.resource_exclude_media_url = ('/%s' %
-                                       self.domain[
-                                           self.resource_exclude_media]['url'])
-
+        self.resource_exclude_media_url = (
+            '/%s' % self.domain[self.resource_exclude_media]['url'])
 
         response, _ = self.get('contacts', '?max_results=2')
         contact = self.response_item(response)

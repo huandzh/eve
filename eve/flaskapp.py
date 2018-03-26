@@ -691,15 +691,15 @@ class Eve(Flask, Events):
         # concealing fields (rather than actual mongo exlusions).
         # If inclusion projections are defined, exclusion projections are
         # just ignored.
-        exclusion_projection = {k: v for k, v in projection.items()
-                                if v == 0}
-        inclusion_projection = {k: v for k, v in projection.items()
-                                if v == 1}
-        if exclusion_projection or inclusion_projection:
-            projection = inclusion_projection
-            ds['projection'] = projection
         # Enhance the projection with automatic fields.
         if len(schema) and settings['allow_unknown'] is False:
+            exclusion_projection = {k: v for k, v in projection.items()
+                                    if v == 0}
+            inclusion_projection = {k: v for k, v in projection.items()
+                                    if v == 1}
+            if exclusion_projection or inclusion_projection:
+                projection = inclusion_projection
+                ds['projection'] = projection
             # use all fields not excluded
             if not projection:
                 projection.update(

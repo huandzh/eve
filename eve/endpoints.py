@@ -185,6 +185,9 @@ def media_endpoint(_id):
 
     .. versionadded:: 0.6
     """
+    # ISSUE: OPTIONS method not dealed before
+    if request.method == 'OPTIONS':
+        return send_response(None, (None,))
     file_ = app.media.get(_id)
     if file_ is None:
         return abort(404)

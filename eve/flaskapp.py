@@ -291,7 +291,10 @@ class Eve(Flask, Events):
             """ Checks if JSON or XML setting is still being used instead of
             RENDERERS and if so, composes new settings.
             """
-            msg = "{} setting is deprecated and will be removed" " in future release. Please use RENDERERS instead."
+            msg = (
+                "{} setting is deprecated and will be removed"
+                " in future release. Please use RENDERERS instead."
+            )
 
             if "JSON" in self.config or "XML" in self.config:
                 self.config["RENDERERS"] = default_settings.RENDERERS[:]
@@ -1064,9 +1067,8 @@ class Eve(Flask, Events):
                 self.config["MEDIA_URL"],
             )
             self.add_url_rule(
-                media_url, 'media',
-                view_func=media_endpoint, methods=['GET',
-                                                   'OPTIONS'])
+                media_url, "media", view_func=media_endpoint, methods=["GET", "OPTIONS"]
+            )
 
     def _init_schema_endpoint(self):
         """Configures the schema endpoint if set in configuration.
